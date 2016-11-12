@@ -30,14 +30,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Verifier"
-            android:label="@string/title_activity_verifier"
-            android:parentActivityName=".OCRActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hackfa16.godutch.OCRActivity" />
-        </activity>
+            android:name=".VerifyingActivity"
+            android:label="@string/title_activity_verifying"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
