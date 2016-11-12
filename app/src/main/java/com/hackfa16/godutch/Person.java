@@ -12,6 +12,7 @@ import java.util.List;
 public class Person {
     private int color;
     private double unTippedTotal;
+    private double tipRate;
     private double tip;
     private double taxRate;
     private double tax;
@@ -23,7 +24,7 @@ public class Person {
         color = c;
         taxRate = tr;
         items = new ArrayList<>();
-        tip = t;
+        tipRate = t;
         unTippedTotal = 0;
     }
 
@@ -46,19 +47,22 @@ public class Person {
         return prices;
     }
 
-    public void calculateTotalBeforeTip(){
+    public void calculate(){
         for(REntry i:items){
             unTippedTotal+=i.getPrice();
         }
         tax = unTippedTotal*taxRate;
+        tip = tipRate*(unTippedTotal+tax);
     }
 
     public double getTotal(){
-        calculateTotalBeforeTip();
+        calculate();
         return unTippedTotal+tip+tax;
     }
 
     public double getTax(){
         return tax;
     }
+
+    public double getTip() { return tip; }
 }
