@@ -245,7 +245,8 @@ public class OCRActivity extends AppCompatActivity {
                         tax = item;
                     } else if(item.getName().contains("AMOUNT") || item.getName().contains("DUE") ||
                             item.getName().contains("TOTAL") || item.getName().contains("PURCHASE") ||
-                            item.getName().contains("BALANCE") || item.getName().contains("SALE")) {
+                            item.getName().contains("BALANCE") || item.getName().contains("SALE") ||
+                            item.getName().contains("CHARGE")) {
                         total = item;
                     } else {
                         rest.add(item);
