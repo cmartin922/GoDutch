@@ -12,28 +12,35 @@
     tools:context="com.hackfa16.godutch.LandingActivity">
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         app:srcCompat="@android:drawable/ic_menu_add"
         android:id="@+id/imageButton3"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp"
-        android:layout_alignTop="@+id/imageButton2"
-        android:layout_toRightOf="@+id/imageButton2"
-        android:layout_toEndOf="@+id/imageButton2"
         android:contentDescription="Image Picker"
-        android:onClick="openImagePicker"/>
+        android:onClick="openImagePicker"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_alignTop="@+id/imageButton2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:elevation="24dp"
+        android:visibility="visible"
+         />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         app:srcCompat="@android:drawable/ic_menu_camera"
-        android:layout_marginLeft="113dp"
-        android:layout_marginStart="113dp"
         android:id="@+id/imageButton2"
-        android:layout_centerVertical="true"
+        android:contentDescription="Take Picture"
+        android:onClick="openCamera"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:contentDescription="Take Picture"
-        android:onClick="openCamera" />
+        android:elevation="24dp"
+  />
+
 </RelativeLayout>
