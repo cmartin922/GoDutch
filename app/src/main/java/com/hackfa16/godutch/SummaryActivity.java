@@ -1,5 +1,6 @@
 package com.hackfa16.godutch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,24 +16,30 @@ import java.util.List;
 
 public class SummaryActivity extends AppCompatActivity {
 
+    public ArrayList<String> passings = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
 
-        GridView gv = (GridView) findViewById(R.id.summary);
+        Intent intent = getIntent();
+        passings = (ArrayList<String>) intent.getSerializableExtra("passings");
 
-        List<Person> users;
+        ListView lv = (ListView) findViewById(R.id.summary);
+
 
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                users );
 
-        gv.setAdapter(arrayAdapter);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_summary, passings);
+
+
+//        for (int i = 0; i < passings.size(); i++) {
+//            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_summary, summaries.get(i));
+//            lv.setAdapter(arrayAdapter);
+//        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
