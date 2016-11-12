@@ -104,44 +104,6 @@ public class OCRActivity extends AppCompatActivity {
         return OCRresult;
     }
 
-    public class REntry {
-        String name;
-        String price;
-        public REntry(String n, String p) {
-            name = n;
-            price = p;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getPrice() {
-            return price;
-        }
-    }
-
-    public class recContents {
-        REntry total;
-        REntry tax;
-
-        REntry[] items;
-
-        public recContents(){
-
-        }
-
-        public REntry getTotal(){
-            return total;
-        }
-        public REntry getTax(){
-            return tax;
-        }
-        public REntry[] getItems(){
-            return items;
-        }
-    }
-
 
     private void parseText(String s) {
         String[] lines = s.split("\\r?\\n");
