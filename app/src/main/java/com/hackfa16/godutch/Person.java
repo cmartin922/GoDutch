@@ -10,14 +10,14 @@ import java.util.List;
  */
 
 public class Person {
-    private char color;
+    private int color;
     private double unTippedTotal;
     private double tip;
     private double taxRate;
     private double tax;
     private List<REntry> items;
 
-    public Person(char c, View v, double tr, REntry[] its, double t){
+    public Person(int c, double tr, REntry[] its, double t){
         color = c;
         taxRate = tr;
         items = new ArrayList<>();
