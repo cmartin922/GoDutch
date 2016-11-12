@@ -12,8 +12,6 @@
     tools:context="com.hackfa16.godutch.LandingActivity">
     <!--ToDo: fix height-->
 
-    <include layout="@layout/content_verifying" />
-
     <TextView
         android:text="Is this correct?"
         android:layout_width="match_parent"
@@ -47,6 +45,19 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/button2"
         android:onClick="notSatisfied"/>
+
+    <ListView
+        android:id="@+id/gridView1"
+        android:numColumns="1"
+        android:gravity="center"
+        android:columnWidth="50dp"
+        android:stretchMode="columnWidth"
+        android:layout_width="fill_parent"
+        android:layout_height="470dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </ListView>
 
 
 </RelativeLayout>

@@ -47,6 +47,8 @@ public class Person {
         return prices;
     }
 
+    public List<REntry> getItems() {return items;}
+
     public void calculate(){
         for(REntry i:items){
             unTippedTotal+=i.getPrice();
