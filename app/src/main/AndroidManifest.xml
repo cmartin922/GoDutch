@@ -20,7 +20,7 @@
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".LandingActivity"
-            android:label="LandingActivity">
+            android:label="Receipt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,11 +45,11 @@
 
         <activity
             android:name=".SummaryActivity"
-            android:label="@string/title_activity_summary"
+            android:label="Summary"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SelectorActivity"
-            android:label="@string/selector_activity">
+            android:label="Select">
         </activity>
         <activity
             android:name=".PersonSummaryActivity"
