@@ -2,6 +2,9 @@ package com.hackfa16.godutch;
 
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by KonstantinChen on 11/11/16.
  */
@@ -10,19 +13,20 @@ public class Person {
     private char color;
     private double unTippedTotal;
     private double tip;
-    private double total;
     private double taxRate;
     private double tax;
-    private REntry[] items;
+    private List<REntry> items;
 
     public Person(char c, View v, double tr, REntry[] its, double t){
         color = c;
         taxRate = tr;
-        items = its;
+        items = new ArrayList<>();
         tip = t;
         unTippedTotal = 0;
-        calculateTotalBeforeTip();
+    }
 
+    public void addREntry(REntry entry){
+        items.add(entry);
     }
 
     public void calculateTotalBeforeTip(){
@@ -33,6 +37,7 @@ public class Person {
     }
 
     public double getTotal(){
+        calculateTotalBeforeTip();
         return unTippedTotal+tip+tax;
     }
 
