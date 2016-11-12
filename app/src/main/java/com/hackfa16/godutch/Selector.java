@@ -25,6 +25,7 @@ public class Selector extends Activity {
     public int number = 0;
     public double tr;
     public double tipRate;
+    TextView colorDot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +55,9 @@ public class Selector extends Activity {
         sv.addView(ll);
 
         //Color Dot
-        TextView colorDot = new TextView(this);
+        colorDot = new TextView(this);
         colorDot.setText("o");
-        colorDot.setTextColor(colors.get(number));
+        colorDot.setTextColor(colors.get(number % colors.size()));
 
         // Checkboxes
         boxes = new ArrayList<CheckBox>();
@@ -91,7 +92,7 @@ public class Selector extends Activity {
 
     public void nextButtonClicked(View view) {
         ArrayList<REntry> list = items.items;
-        Person user = new Person(colors.get(number), tr, items.items, tipRate);
+        Person user = new Person(colors.get(number), tr, tipRate);
         for (int i = 0; i < boxes.size(); i++){
             CheckBox check = boxes.get(i);
             if (check.isChecked()) {
@@ -106,6 +107,11 @@ public class Selector extends Activity {
             }
         }
         number++;
+        colorDot.setTextColor(number);
+        Intent intent = getIntent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        startActivity(intent);
     }
 
     public void doneButtonClicked(View view) {
