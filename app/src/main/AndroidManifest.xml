@@ -23,16 +23,21 @@
         <activity
             android:name=".LandingActivity"
             android:label="LandingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".VerifyingActivity"
             android:label="@string/title_activity_verifying"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <activity android:name=".TipActivity"></activity>
     </application>
 
 </manifest>
