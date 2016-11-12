@@ -7,6 +7,8 @@
     <string name="title_activity_ocr">OCRActivity</string>
     <string name="title_activity_verifier">Verifier</string>
     <string name="selector_activity">SelectorActivity</string>
+    <string name="button_done">done</string>
+    <string name="button_next">next</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

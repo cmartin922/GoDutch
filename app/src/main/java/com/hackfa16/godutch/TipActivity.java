@@ -46,10 +46,8 @@ public class TipActivity extends AppCompatActivity {
                     break;
         }
         Intent intent = new Intent(this, SelectorActivity.class);
-        Bundle extras = new Bundle();
-        extras.putDouble("tipRate", tipRate);
-        extras.putSerializable("receipts", items);
-        intent.putExtras(extras);
+        intent.putExtra("receipts", items);
+        intent.putExtra("tr", tipRate);
         startActivity(intent);
     }
 }

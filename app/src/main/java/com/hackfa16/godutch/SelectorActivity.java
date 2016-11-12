@@ -28,8 +28,8 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
     public List<String> passings;
     Button done;
     Button next;
-    public static final int DONE_BUTTON_ID = 1;
-    public static final int NEXT_BUTTON_ID = 2;
+    private static final int DONE_BUTTON_ID = 1;
+    private static final int NEXT_BUTTON_ID = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,10 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
         passings = new ArrayList<String>();
 
         Intent intent = getIntent();
-        Bundle extra = intent.getExtras();
-        items = (RContents) (extra.getSerializable("receipt"));
+//        Bundle extras = intent.getExtras();
+//        System.out.println(extras.toString());
+//        items = (RContents) (extras.get("receipt"));
+        items = (RContents) intent.getSerializableExtra("receipts");
         System.out.println("selector");
         System.out.println(items==null);
 
@@ -59,7 +61,7 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
 
         // Tip
 
-        tipRate = extra.getDouble("tipRate", .15);
+        tipRate = intent.getDoubleExtra("tr", .15);
 
         // Super View
         final LinearLayout ll = new LinearLayout(this);
@@ -74,9 +76,6 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
         // Checkboxes
         boxes = new ArrayList<CheckBox>();
 
-        Intent getRContents = getIntent();
-        items = (RContents) getRContents.getSerializableExtra("receipt");
-
         ArrayList<REntry> list = items.items;
         for (int i = 0; i < list.size(); i++){
             CheckBox check = new CheckBox(getApplicationContext());
@@ -89,13 +88,62 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
         // Buttons
         done = new Button(this);
         done.setText("Done");
+        done.setId(DONE_BUTTON_ID);
         done.setOnClickListener(this);
         ll.addView(done);
+//        done = (Button) findViewById(R.id.button_done);
+//        done.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                System.out.println("done clicked");
+//                Intent intent = new Intent(SelectorActivity.this, SummaryActivity.class);
+//                intent.putExtra("users", (Serializable) users);
+//                intent.putExtra("passings", (Serializable) passings);
+//                startActivity(intent);
+//            }
+//        });
+//        ll.addView(done);
+
 
         next = new Button(this);
         next.setText("Next");
+        next.setId(NEXT_BUTTON_ID);
         next.setOnClickListener(this);
-        ll.addView(done);
+        ll.addView(next);
+
+//        next = (Button) findViewById(R.id.button_next);
+//        next.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                System.out.println("next clicked");
+//                ArrayList<REntry> list = items.items;
+//                Person user = new Person(colors.get(number), tr, tipRate);
+//
+//                for (int i = 0; i < boxes.size(); i++){
+//                    CheckBox check = boxes.get(i);
+//                    if (check.isChecked()) {
+//                        user.addREntry(list.get(i));
+//                    }
+//                }
+//
+//                double total = user.getTotal();
+//
+//                String passing = total+"*"+number;
+//                passings.add(passing);
+//
+//                for (int i = 0; i < boxes.size(); i++){
+//                    CheckBox check = boxes.get(i);
+//                    if (check.isChecked()){
+//                        check.toggle();
+//                    }
+//                }
+//                number++;
+//                colorDot.setTextColor(number);
+//                Intent intent = getIntent();
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                finish();
+//                startActivity(intent);
+//            }
+//        });
+//        ll.addView(next);
 
         //Person
         List<Person> users = new ArrayList<Person>();
@@ -144,6 +192,9 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
+        System.out.println(view.getId());
+        System.out.println(next.getId());
+        System.out.println(done.getId());
         if (view.getId() == next.getId()) {
             System.out.println("next clicked");
             ArrayList<REntry> list = items.items;
@@ -155,7 +206,7 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
                     user.addREntry(list.get(i));
                 }
             }
-            users.add(user);
+
             double total = user.getTotal();
 
             String passing = total+"*"+number;
