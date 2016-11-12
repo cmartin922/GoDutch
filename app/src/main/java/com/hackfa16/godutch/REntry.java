@@ -25,4 +25,8 @@ public class REntry implements Serializable {
         return Double.parseDouble(price);
     }
 
+    public String toString(){
+        return getName()+" "+getPrice();
+    }
+
 }
