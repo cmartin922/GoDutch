@@ -1,5 +1,6 @@
 package com.hackfa16.godutch;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +8,7 @@ import android.widget.RadioButton;
 
 public class TipActivity extends AppCompatActivity {
 
-    public double totalTip;
+    public double tipRate;
     public RContents items;
 
     @Override
@@ -24,20 +25,23 @@ public class TipActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radioButton0:
                 if (checked)
-                    totalTip = 0;
+                    tipRate = 0;
                     break;
             case R.id.radioButton15:
                 if (checked)
-                    totalTip = .15*items.getTotal().getPrice();
+                    tipRate = .15;
                     break;
             case R.id.radioButton18:
                 if (checked)
-                    totalTip = .18*items.getTotal().getPrice();
+                    tipRate = .18;
                     break;
             case R.id.radioButton20:
                 if (checked)
-                    totalTip = .2*items.getTotal().getPrice();
+                    tipRate = .2;
                     break;
         }
+        Intent intent = new Intent(this, Selector.class);
+        intent.putExtra("tipRate", tipRate);
+        startActivity(intent);
     }
 }
