@@ -16,17 +16,17 @@
 
     </android.support.design.widget.AppBarLayout>
 
-   <!--<include layout="@layout/content_verifier" />-->
+   <include layout="@layout/content_verifier" />
 
-    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/gridView1"
-        android:numColumns="1"
-        android:gravity="center"
-        android:stretchMode="columnWidth"
-        android:layout_width="fill_parent"
-        android:layout_height="513dp"
-        android:columnWidth="147dp">
-    </GridView>
+    <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/gridView1"-->
+        <!--android:numColumns="1"-->
+        <!--android:gravity="center"-->
+        <!--android:stretchMode="columnWidth"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="513dp"-->
+        <!--android:columnWidth="147dp">-->
+    <!--</GridView>-->
 
     <!--<TextView xmlns:android="http://schemas.android.com/apk/res/android"-->
         <!--android:layout_width="fill_parent"-->
