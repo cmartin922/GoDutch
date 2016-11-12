@@ -214,18 +214,24 @@ public class OCRActivity extends AppCompatActivity {
                 if(last.charAt(0) == '$'){
                     last = last.substring(1);
                 }
-                REntry item = new REntry(first,last);
-
-                if(item.getName().contains("TAX")){
-                    tax = item;
-                } else if(item.getName().contains("AMOUNT") || item.getName().contains("DUE") ||
-                        item.getName().contains("TOTAL") || item.getName().contains("PURCHASE") ||
-                        item.getName().contains("BALANCE") || item.getName().contains("SALE")) {
-                    total = item;
-                } else {
-                    rest.add(item);
+                int isDouble = 1;
+                for(int j = 0; j < last.length(); j++){
+                    if(!Character.isDigit(last.charAt(i))) {
+                        isDouble = 0;
+                    }
                 }
-
+                if(isDouble == 1){
+                    REntry item = new REntry(first,last);
+                    if(item.getName().contains("TAX")){
+                        tax = item;
+                    } else if(item.getName().contains("AMOUNT") || item.getName().contains("DUE") ||
+                            item.getName().contains("TOTAL") || item.getName().contains("PURCHASE") ||
+                            item.getName().contains("BALANCE") || item.getName().contains("SALE")) {
+                        total = item;
+                    } else {
+                        rest.add(item);
+                    }
+                }
             }
         }
 
