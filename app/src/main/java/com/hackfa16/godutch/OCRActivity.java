@@ -216,7 +216,7 @@ public class OCRActivity extends AppCompatActivity {
                 }
                 int isDouble = 1;
                 for(int j = 0; j < last.length(); j++){
-                    if(!Character.isDigit(last.charAt(i))) {
+                    if(!Character.isDigit(last.charAt(j)) && !(last.charAt(j) == '.')) {
                         isDouble = 0;
                     }
                 }
