@@ -12,6 +12,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
     public List<Integer> nums;
     public List<Double> sums;
     public List<Integer> colors;
-    public int number = 0;
+    public int number = 1;
     public double tr;
     public double tipRate;
     TextView colorDot;
@@ -69,7 +70,7 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
 
         //Color Dot
         colorDot = new TextView(this);
-        colorDot.setText("User 0");
+        colorDot.setText("User 1");
         colorDot.setTextSize(15);
         colorDot.setTextColor(Color.BLACK);
         ll.addView(colorDot);
@@ -127,8 +128,10 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
 
             double total = user.getTotal();
 
+            DecimalFormat df2 = new DecimalFormat("###.##");
+            double roundedTotal = Double.valueOf(df2.format(total));
             nums.add(number);
-            sums.add(total);
+            sums.add(roundedTotal);
 
             String passing = total+"*"+number;
             passings.add(passing);
@@ -144,6 +147,7 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
         }
         if (view.getId() == done.getId()) {
             System.out.println("done clicked");
+            System.out.println(sums.toString());
             Intent intent = new Intent(this, SummaryActivity.class);
 //            intent.putExtra("users", (Serializable) users);
 //            intent.putExtra("passings", (Serializable) passings);

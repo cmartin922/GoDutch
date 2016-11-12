@@ -16,7 +16,8 @@ import java.util.List;
 
 public class SummaryActivity extends AppCompatActivity {
 
-    public ArrayList<String> passings = new ArrayList<>();
+    public ArrayList<Integer> numbers = new ArrayList<>();
+    public ArrayList<Double> totals = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,14 @@ public class SummaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_summary);
 
         Intent intent = getIntent();
-        passings = (ArrayList<String>) intent.getSerializableExtra("passings");
+        numbers = (ArrayList<Integer>) intent.getSerializableExtra("numbers");
+        totals = (ArrayList<Double>) intent.getSerializableExtra("totals");
+
+        ArrayList<String> passings = new ArrayList<>();
+        for(int i = 0; i < totals.size(); i++) {
+            passings.add(numbers.get(i).toString() + " - " + totals.get(i).toString());
+        }
+
 
         ListView lv = (ListView) findViewById(R.id.summary);
 
@@ -33,7 +41,9 @@ public class SummaryActivity extends AppCompatActivity {
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_summary, passings);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_list_item_1, passings);
+                lv.setAdapter(arrayAdapter);
 
 
 //        for (int i = 0; i < passings.size(); i++) {

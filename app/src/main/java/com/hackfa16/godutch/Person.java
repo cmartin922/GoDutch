@@ -39,6 +39,8 @@ public class Person {
         }
     }
 
+    public int getColor() {return color; }
+
     public List<String> getNames(){
         return names;
     }

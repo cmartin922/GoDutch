@@ -43,8 +43,8 @@ public class OCRActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ocr);
 
         Intent intent = getIntent();
-
         imageUri = Uri.parse(intent.getStringExtra("imageUri"));
+
         System.out.println(imageUri.toString());
         try {
             image = getCorrectlyOrientedImage(this, imageUri);
@@ -53,26 +53,45 @@ public class OCRActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
         ImageView iv = (ImageView) findViewById(R.id.imageView);
         iv.setImageBitmap(image);
 
-        datapath = getFilesDir()+ "/tesseract/";
+        class APIR implements Runnable {
+            private String contents;
 
-        //make sure training data has been copied
-        checkFile(new File(datapath + "tessdata/"));
+            @Override
+            public void run() {
+                    datapath = getFilesDir()+ "/tesseract/";
 
-        //init Tesseract API
-        String language = "eng";
+                    //make sure training data has been copied
+                    checkFile(new File(datapath + "tessdata/"));
 
-        mTess = new TessBaseAPI();
-        mTess.init(datapath, language);
-        String  contents = processImage();
+                    //init Tesseract API
+                    String language = "eng";
 
-        mTess.stop();
+                    mTess = new TessBaseAPI();
+                    mTess.init(datapath, language);
+                    contents = processImage();
 
-        RContents allData = parseText(contents);
+                    mTess.stop();
+
+            }
+            private String getContents() {
+                return contents;
+            }
+        }
+
+        APIR apir = new APIR();
+        Thread apiReq = new Thread(apir);
+        apiReq.start();
+
+        try {
+            apiReq.join();
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
+        RContents allData = parseText(apir.getContents());
 
         Intent receipt = new Intent(this,VerifyingActivity.class);
         receipt.putExtra("receipt", allData);
