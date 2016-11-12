@@ -26,6 +26,7 @@ public class Selector extends Activity {
     public double tr;
     public double tipRate;
     TextView colorDot;
+    public List<String> passings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,8 @@ public class Selector extends Activity {
         colors.add(Color.YELLOW);
         colors.add(Color.GREEN);
         colors.add(Color.GRAY);
+
+        passings = new ArrayList<String>();
 
         // Tax Rate
         tr = (items.getTax().getPrice())/(items.getTotal().getPrice());
@@ -93,6 +96,7 @@ public class Selector extends Activity {
     public void nextButtonClicked(View view) {
         ArrayList<REntry> list = items.items;
         Person user = new Person(colors.get(number), tr, tipRate);
+
         for (int i = 0; i < boxes.size(); i++){
             CheckBox check = boxes.get(i);
             if (check.isChecked()) {
@@ -100,6 +104,11 @@ public class Selector extends Activity {
             }
         }
         users.add(user);
+        double total = user.getTotal();
+
+        String passing = total+"*"+number;
+        passings.add(passing);
+
         for (int i = 0; i < boxes.size(); i++){
             CheckBox check = boxes.get(i);
             if (check.isChecked()){
@@ -117,5 +126,7 @@ public class Selector extends Activity {
     public void doneButtonClicked(View view) {
         Intent intent = new Intent(this, SummaryActivity.class);
         intent.putExtra("users", (Serializable) users);
+        intent.putExtra("passings", (Serializable) passings);
+        startActivity(intent);
     }
 }
