@@ -69,14 +69,14 @@ public class LandingActivity extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             System.out.println(mLocationForPhotos);
             Intent intent = new Intent(this, OCRActivity.class);
-            intent.putExtra("imageUri", mLocationForPhotos);
+            intent.putExtra("imageUri", mLocationForPhotos.toString());
             startActivity(intent);
         }
         if (requestCode == REQUEST_SELECT_IMAGE && resultCode == RESULT_OK) {
             mLocationForPhotos = data.getData();
             System.out.println(mLocationForPhotos);
             Intent intent = new Intent(this, OCRActivity.class);
-            intent.putExtra("imageUri", mLocationForPhotos);
+            intent.putExtra("imageUri", mLocationForPhotos.toString());
             startActivity(intent);
         }
     }
