@@ -16,7 +16,7 @@ public class REntry {
         return name;
     }
 
-    public String getPrice() {
-        return price;
+    public double getPrice() {
+        return Double.parseDouble(price);
     }
 }
