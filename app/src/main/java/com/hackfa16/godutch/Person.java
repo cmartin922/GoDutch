@@ -13,9 +13,9 @@ public class Person {
     private double total;
     private double taxRate;
     private double tax;
-    private Item[] items;
+    private REntry[] items;
 
-    public Person(char c, View v, double tr, Item[] its, double t){
+    public Person(char c, View v, double tr, REntry[] its, double t){
         color = c;
         taxRate = tr;
         items = its;
@@ -26,7 +26,7 @@ public class Person {
     }
 
     public void calculateTotalBeforeTip(){
-        for(Item i:items){
+        for(REntry i:items){
             unTippedTotal+=i.getPrice();
         }
         tax = unTippedTotal*taxRate;
