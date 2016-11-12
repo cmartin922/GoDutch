@@ -30,6 +30,13 @@ public class Person {
             unTippedTotal+=i.getPrice();
         }
         tax = unTippedTotal*taxRate;
-        unTippedTotal+=tax;
+    }
+
+    public double getTotal(){
+        return unTippedTotal+tip+tax;
+    }
+
+    public double getTax(){
+        return tax;
     }
 }
