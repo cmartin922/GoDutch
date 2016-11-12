@@ -57,7 +57,7 @@ public class Selector extends Activity {
         //Color Dot
         colorDot = new TextView(this);
         colorDot.setText("o");
-        colorDot.setTextColor(colors.get(number));
+        colorDot.setTextColor(colors.get(number % colors.size()));
 
         // Checkboxes
         boxes = new ArrayList<CheckBox>();
