@@ -15,6 +15,11 @@ public class TipActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
+
+        Intent intent = getIntent();
+        items = (RContents)intent.getSerializableExtra("receipt");
+        System.out.println("tip act");
+        System.out.println(items==null);
     }
 
     public void onRadioButtonClicked(View view) {
@@ -40,8 +45,9 @@ public class TipActivity extends AppCompatActivity {
                     tipRate = .2;
                     break;
         }
-        Intent intent = new Intent(this, Selector.class);
+        Intent intent = new Intent(this, SelectorActivity.class);
         intent.putExtra("tipRate", tipRate);
+        intent.putExtra("receipts", items);
         startActivity(intent);
     }
 }

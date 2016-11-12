@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:id="@+id/radioButton0"
-        android:onClick="tipcalc"/>
+        android:onClick="onRadioButtonClicked"/>
 
     <RadioButton
         android:text="15%"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:id="@+id/radioButton15"
-        android:onClick="tipcalc"/>
+        android:onClick="onRadioButtonClicked"/>
 
     <RadioButton
         android:text="18%"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:id="@+id/radioButton18"
-        android:onClick="tipcalc"/>
+        android:onClick="onRadioButtonClicked"/>
 
     <RadioButton
         android:text="20%"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:id="@+id/radioButton20"
-        android:onClick="tipcalc"/>
+        android:onClick="onRadioButtonClicked"/>
 </RadioGroup>
 
 </RelativeLayout>

@@ -22,7 +22,17 @@ public class REntry implements Serializable {
     }
 
     public double getPrice() {
-        return Double.parseDouble(price);
+        double prc;
+        try {
+            prc = Double.parseDouble(price);
+        } catch (Exception e) {
+            String newPrice = price.replaceAll("[^\\d.]", "");
+            if (newPrice == "") {
+                return 0;
+            }
+            prc = Double.parseDouble(newPrice);
+        }
+        return prc;
     }
 
     public String toString(){
