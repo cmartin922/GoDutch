@@ -13,6 +13,11 @@
     tools:context="com.hackfa16.godutch.SummaryActivity"
     tools:showIn="@layout/activity_summary">
 
-    
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        android:id="@+id/summary">
+    </GridView>
 
 </RelativeLayout>
