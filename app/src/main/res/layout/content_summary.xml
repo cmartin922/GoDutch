@@ -13,4 +13,6 @@
     tools:context="com.hackfa16.godutch.SummaryActivity"
     tools:showIn="@layout/activity_summary">
 
+    
+
 </RelativeLayout>

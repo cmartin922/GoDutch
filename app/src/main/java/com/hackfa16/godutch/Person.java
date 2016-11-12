@@ -16,8 +16,10 @@ public class Person {
     private double taxRate;
     private double tax;
     private List<REntry> items;
+    private List<String> names;
+    private List<Double> prices;
 
-    public Person(int c, double tr, REntry[] its, double t){
+    public Person(int c, double tr, double t){
         color = c;
         taxRate = tr;
         items = new ArrayList<>();
@@ -27,6 +29,21 @@ public class Person {
 
     public void addREntry(REntry entry){
         items.add(entry);
+    }
+
+    private void splitList(){
+        for(REntry i:items){
+            names.add(i.getName());
+            prices.add(i.getPrice());
+        }
+    }
+
+    public List<String> getNames(){
+        return names;
+    }
+
+    public List<Double> getPrices(){
+        return prices;
     }
 
     public void calculateTotalBeforeTip(){
