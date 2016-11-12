@@ -1,10 +1,15 @@
 package com.hackfa16.godutch;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by cmartin on 11/12/16.
  */
 
-public class REntry {
+public class REntry implements Serializable {
     String name;
     String price;
     public REntry(String n, String p) {
@@ -16,7 +21,8 @@ public class REntry {
         return name;
     }
 
-    public String getPrice() {
-        return price;
+    public double getPrice() {
+        return Double.parseDouble(price);
     }
+
 }
