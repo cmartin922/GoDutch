@@ -26,10 +26,10 @@ public class Selector extends Activity {
         ll.setOrientation(LinearLayout.VERTICAL);
         sv.addView(ll);
         boxes = new ArrayList<CheckBox>();
-        REntry[] list = items.items;
-        for (int i = 0; i < list.length; i++){
+        ArrayList<REntry> list = items.items;
+        for (int i = 0; i < list.size(); i++){
             CheckBox check = new CheckBox(getApplicationContext());
-            check.setText(list[i].getName()+"   "+list[i].getPrice());
+            check.setText(list.get(i).getName()+"   "+list.get(i).getPrice());
             ll.addView(check);
         }
         Intent getRContents = getIntent();

@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by cmartin on 11/12/16.
@@ -14,9 +15,10 @@ public class RContents implements Serializable {
     REntry total;
     REntry tax;
 
-    REntry[] items;
+    ArrayList<REntry> items;
 
-    public void recContents(REntry to, REntry ta, REntry[] i){
+
+    public RContents(REntry to, REntry ta, ArrayList<REntry> i){
         total = to;
         tax = ta;
         items = i;
@@ -29,7 +31,7 @@ public class RContents implements Serializable {
     public REntry getTax(){
         return tax;
     }
-    public REntry[] getItems(){
+    public ArrayList<REntry> getItems(){
         return items;
     }
 }

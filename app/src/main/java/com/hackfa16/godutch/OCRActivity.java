@@ -20,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.File;
+import java.util.ArrayList;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
@@ -71,7 +72,11 @@ public class OCRActivity extends AppCompatActivity {
 
         mTess.stop();
 
-        parseText(contents);
+        RContents allData = parseText(contents);
+
+        Intent receipt = new Intent();
+        receipt.putExtra("receipt", allData);
+
     }
 
     public static int getOrientation(Context context, Uri photoUri) {
@@ -187,22 +192,43 @@ public class OCRActivity extends AppCompatActivity {
     }
 
 
-    private void parseText(String s) {
+    private RContents parseText(String s) {
         String[] lines = s.split("\\r?\\n");
+        REntry total = new REntry("0","0");
+        REntry tax= new REntry("0","0");
+        ArrayList<REntry> rest = new ArrayList<>();
 
-        for(int i = 0; i < lines.length;i++){
-            if ((lines[i].contains("."))) {
+        for (int i = 0; i < lines.length; i++) {
+            if (!(lines[i].contains("."))) {
                 lines[i] = "bad";
             }
         }
 
-        for(int i = 0; i < lines.length; i++){
-            if(!(lines[i].equals("bad"))){
-                lines[i].split("\r?\n");
-                System.out.println(lines[i]);
+        for (int i = 0; i < lines.length; i++) {
+            if (!(lines[i].equals("bad"))) {
+                lines[i].split("\\r?\\n");
+                String p = lines[i].trim();
+                int split = p.lastIndexOf(' ');
+                String first = p.substring(0,split).trim().toUpperCase();
+                String last = p.substring(split).trim().toUpperCase();
+                if(last.charAt(0) == '$'){
+                    last = last.substring(1);
+                }
+                REntry item = new REntry(first,last);
+
+                if(item.getName().contains("TAX")){
+                    tax = item;
+                } else if(item.getName().contains("AMOUNT") || item.getName().contains("DUE") ||
+                        item.getName().contains("TOTAL") || item.getName().contains("PURCHASE") ||
+                        item.getName().contains("BALANCE") || item.getName().contains("SALE")) {
+                    total = item;
+                } else {
+                    rest.add(item);
+                }
+
             }
         }
 
-
+        return new RContents(total, tax, rest);
     }
 }
