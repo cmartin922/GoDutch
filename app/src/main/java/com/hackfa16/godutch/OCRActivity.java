@@ -74,9 +74,9 @@ public class OCRActivity extends AppCompatActivity {
 
         RContents allData = parseText(contents);
 
-        Intent receipt = new Intent();
+        Intent receipt = new Intent(this,VerifyingActivity.class);
         receipt.putExtra("receipt", allData);
-
+        startActivity(receipt);
     }
 
     public static int getOrientation(Context context, Uri photoUri) {
